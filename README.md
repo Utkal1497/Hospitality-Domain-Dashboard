@@ -57,7 +57,7 @@ The Table visual is used to show individual property details. Another table visu
 - The transformation and data cleaning is done in Power Query and then the data is loaded.
 - Multiple key measures are created.
 
-  	-ADR = DIVIDE([Revenue],[Total Booking],0)
+  		-ADR = DIVIDE([Revenue],[Total Booking],0)
   		-Avg rating = AVERAGE(fact_bookings[ratings_given])
   		-Booking % by Platform = DIVIDE([Total Booking],CALCULATE([Total Booking],ALL(fact_bookings[booking_platform])))
   		-Booking % by Room class = DIVIDE([Total Booking],CALCULATE([Total Booking],ALL(dim_rooms[room_class])))
