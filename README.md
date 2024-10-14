@@ -90,42 +90,47 @@ The Table visual is used to show individual property details. Another table visu
 
 ## Report Snapshot (Power BI Desktop)
  
-  ![Snap_Percentage](https://github.com/user-attachments/assets/e6f7f7fc-0e0d-45c8-b951-32b23f13031d)
+  ![Snap_Percentage](https://github.com/user-attachments/assets/b7cd9452-24ee-42ee-a587-470f17e351fb)
 
 
 - Snap of slicers used, through which the user can filter the report.
 
-   ![Snap_Percentage](https://github.com/user-attachments/assets/63fa1042-5265-4db0-b7c1-d5581bced91f)
+   ![Snap_Percentage](https://github.com/user-attachments/assets/903d019d-0029-43ea-b005-c0e21ebef49d)
+
+- Snap of date filters used, through which the user can filter the report.
+
+   ![Snap_Percentage](https://github.com/user-attachments/assets/9761135c-8667-4ca3-975c-01ea1472f24e)
 
 
-- Card visuals were used to represent the Total number of Plants, Plants without Safety Assessment Scores, and Average Safety Assessment Scores.
+- Card visuals represented the Revenue, RevPAR, DSRN, Occupancy %, etc.
 
-  ![Snap_Count](https://github.com/user-attachments/assets/2a7db2bf-509f-4cf5-adbe-4c08857a1e26)
+  ![Snap_Count](https://github.com/user-attachments/assets/915a1108-4bde-4be0-9b09-3fb584fe3465)
 
  
-- A gauge chart was used to represent the Average retention rate.
+- A column chart was used to represent the Realisation % vs ADR by booking platform.
 
-  ![Snap_Count](https://github.com/user-attachments/assets/ccd7dbb0-d808-4a7f-9857-7a9bbf8003cd) 
-
-
-- A bar chart was used to represent the Retention rate by Market Segment. Tooltip is used to show Total lost days due to Injuries. By hovering over the data bars it will show the related field data.               
-
-  ![Snap_Count](https://github.com/user-attachments/assets/0aed8645-9955-4e31-a471-f6089672dd97) 
+  ![Snap_Count](https://github.com/user-attachments/assets/084beabf-a408-4a62-87f0-18d8f013c4c0) 
 
 
-- A Column chart was used to represent the Number of Plants by Priority. The drill-through feature is used to further dig into the data. Drill-through option is visible by right-clicking on the graph.
+- A line chart was used to represent the trends by key matrix like RevPAR, ADR, and Occupancy for every week.               
 
-  ![Snap_Count](https://github.com/user-attachments/assets/1f94456b-0941-4b19-be6e-9ab7d8e72094) 
-
-
-- A Line chart was used to represent the Turnover rate by Market Segment.
-
-  ![Snap_Count](https://github.com/user-attachments/assets/63646547-5d86-45d5-8291-27c769f96d60)
+  ![Snap_Count](https://github.com/user-attachments/assets/e75dbd07-f853-4ec6-ab1c-a989f7745f64) 
 
 
-- A Table chart was used to represent detailed data based on the Plants.
+- A pie chart represents the revenue by room category (Luxury or Business).
 
-  ![Snap_Count](https://github.com/user-attachments/assets/7c88ac52-5e15-490a-9aaa-b50a6f1a65f1)
+  ![Snap_Count](https://github.com/user-attachments/assets/95f65d95-25b8-49c4-88f9-2c4c7811db45) 
+
+
+- A Table chart was used to represent booking and revenue details based on weekdays and weekends.
+
+  ![Snap_Count](https://github.com/user-attachments/assets/41c7ff49-ed73-4a73-80e5-b8cab601b068)
+
+
+- Another Table chart was used to represent each property detail which is useful to make decisions based on property.
+
+  ![Snap_Count](https://github.com/user-attachments/assets/9c6b01ce-e0a1-499b-a27f-c224e635f972)
+
 
 
 ## Analysis and Result:
