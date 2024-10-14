@@ -17,66 +17,76 @@ A multi-national company owns multiple five-star hotels across India. They have 
 ## Demo of the dashboard:
 
 ### Level 1: 
-Slicers are given using which we can filter the visuals based on
+Slicers and date filters are given using which we can filter the visuals based on
 
-	- Plant ID
-	- Market Segment
-	- Division
 	- City
-	- State/Province
-	- Priority level of sites based on immediate to long-term investments in five waves.
+	- Room Class
+	- Category
+	- week
+	- year month
 
 ### Level 2: 
-Card visual, Bar Chart, column chart, gauge chart and line chart are used along with tooltip and drill through features.
+Card visuals, column charts, pie charts, and line charts are used to show detailed trends.
 
-##### 3 card visuals shows
+##### 6 card visuals shows
 
-	-Total number of plants/sites
-	-Plants without SAS(Safety Assessment Score)
-	-Average of SAS(Safety Assessment Score)
-	-The bar chart shows segment wise retention rate which further connected with tooltips showing the total number of lost days due to injury
-	-Gauge chart shows the average retention rate
-	-Column chart shows the number of plants based on priority
-	-Line chart shows turnover rate based on market segment
+	-Revenue
+	-RevPAR
+	-DSRN
+	-Occupancy %
+	-ADR
+	-Realisation %
+ 
+ ##### Column chart shows
+
+ 	-Realisation % vs ADR by booking platform
+
+  ##### Pie chart shows
+
+  	-Revenue by category
+
+   ##### Line chart shows
+
+   	-Trend comparison of RevPAR, ADR, and Occupancy % for every week.
 
 ### Level 3: 
-The Table visual is used to show the detailed data which can be filtered based on the slicers.
+The Table visual is used to show individual property details. Another table visual shows numeric details based on weekdays and weekends. These visuals filter out based on the slicers.
 
 ## Preparation of dataset:
 
 - The transformation and data cleaning is done in Power Query and then the data is loaded.
-- One calculated column is created based on the below conditions (assumptions) to decide the priority of the sites/plants.
+- Multiple key measures are created.
 
-        -Retention Rate < 0.5
-	    -Severity Rate > 2.5
-	    -Lost Days due to Injuries > 2
-	    -Active Employees < 60
+        	-ADR = DIVIDE([Revenue],[Total Booking],0)
+  		-Avg rating = AVERAGE(fact_bookings[ratings_given])
+  		-Booking % by Platform = DIVIDE([Total Booking],CALCULATE([Total Booking],ALL(fact_bookings[booking_platform])))
+  		-Booking % by Room class = DIVIDE([Total Booking],CALCULATE([Total Booking],ALL(dim_rooms[room_class])))
+  		-Cancellation % = DIVIDE([Total cancelled bookings],[Total Booking])
+  		-DBRN = DIVIDE([Total Booking],[No of Days])
+  		-DSRN = DIVIDE([Total Capacity],[No of Days])
+  		-DURN = DIVIDE([Total Checked out],[No of Days])
+  		-No of Days = DATEDIFF(MIN(dim_date[date]),MAX(dim_date[date]),DAY)+1
+  		-No Show % = DIVIDE([Total No show],[Total Booking])
+  		-Occupancy % = DIVIDE([Total Successful bookings],[Total Capacity],0)
+  		-Realisation % = 1-([Cancellation %]+[No Show %])
+  		-Revenue = SUM(fact_bookings[revenue_realized])
+  		-RevPAR = DIVIDE([Revenue],[Total Capacity])
+  		-Revpar WoW change % = 
+			Var selv = IF(HASONEFILTER(dim_date[wn]),SELECTEDVALUE(dim_date[wn]),MAX(dim_date[wn]))
+			var revcw = CALCULATE([RevPAR],dim_date[wn]= selv)
+			var revpw =  CALCULATE([RevPAR],FILTER(ALL(dim_date),dim_date[wn]= selv-1))
+			
+			return
+			
+			
+			DIVIDE(revcw,revpw,0)-1
+  		-Total Booking = COUNT(fact_bookings[booking_id])
+  		-Total cancelled bookings = CALCULATE([Total Booking],fact_bookings[booking_status]="Cancelled")+0
+  		-Total Capacity = SUM(fact_aggregated_bookings[capacity])
+  		-Total Checked out = CALCULATE([Total Booking],fact_bookings[booking_status]="Checked out")
+  		-Total No show = CALCULATE([Total Booking],fact_bookings[booking_status]="No show")+0
+  		-Total Successful bookings = SUM(fact_aggregated_bookings[successful_bookings])
 
-- Based on that the dataset is categorized into 5 priorities where P1 is the highest and P5 is the lowest priority site.
-
-  for creating a new column following the DAX expression was written;
-
-    Priority =  IF('Plant Details'[Retention Rate ]<0.5,
-			        IF('Plant Details'[Severity Rate]>2.5,
-				        IF('Plant Details'[Lost Days due to Injuries]>2,
-					        IF('Plant Details'[Active Employees]<60,"P1","P2"),
-				        "P3"),
-			        "P4"),
-		        "P5")
-
-- Snap of the new calculated column,
-
-  ![Snap_1](https://github.com/user-attachments/assets/0211662d-a90f-44af-9817-c3b141e3fe09)
-
-- Multiple measures are created like Average retention rate, Average safety assessment score, etc.
-
-        Avg Retention Rate = AVERAGE('Plant Details'[Retention Rate ])+0
-
-        Avg Safety Assessment Score = AVERAGE('Plant Details'[Safety Assessment Score])+0
-
-        Safety Assessment Score NA = COUNTBLANK('Plant Details'[Safety Assessment Score])+0
-
-- One date table is added to show the last refresh timing of the report.
 
 ## Report Snapshot (Power BI Desktop)
  
