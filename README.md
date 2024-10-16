@@ -137,7 +137,7 @@ The Table visual is used to show individual property details. Another table visu
 
 By analyzing the data it was found that we have to take the following steps:
 
-	- First, we have to calculate the plants' safety assessment score, which is not done yet.
-	- From the report we found that 16 plants need immediate action on high priority (P1) then P2, P3, P4, and P5.
-	- We have to get more manpower in the plants that fall in category P1.
-	- In the retention rate graph we can check the market segments ranked at the bottom and invest in them.
+	- By analyzing the dashboard we can have an idea of demand and supply of rooms and make the prices dynamic accordingly.
+	- Different promotions and coupons should be applied on various channels.
+	- We can check the property details and occupancy % for each property and make changes to grab more bookings.
+	- For each hotel, we can get the idea that it's using flat or dynamic pricing based on weekdays and weekends.
